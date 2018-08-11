@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Tilemaps/TilemapCosmo.tres" type="TileSet" id=1]
 
-[node name="Map1" type="Node2D" index="0"]
+[node name="Map1" type="Node2D"]
 
 [node name="Floor" type="TileMap" parent="." index="0"]
 

@@ -19,7 +19,7 @@ var torque = 10
 
 #GUI
 var minEnergyValue = 5
-var maxEnergyValue = 50
+var maxEnergyValue = 500
 var currentEnergy = 0
 
 #Code control
@@ -90,7 +90,7 @@ func _on_SpeedCooldown_timeout():
 	tired = false
 
 func updateBody():
-	$Head.updateBody()
+	$Tail.updateBody()
 
 func grow():
 	var body = bodyPrefab.instance()
