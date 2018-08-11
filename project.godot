@@ -13,6 +13,19 @@ config_version=3
 config/name="LudumDare20180811RunningOutOfTime"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=640
+window/size/height=480
+window/size/test_width=640
+window/size/test_height=480
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="Wall"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
