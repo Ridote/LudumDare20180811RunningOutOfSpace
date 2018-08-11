@@ -14,7 +14,6 @@ func setBodies(player, previous, next):
 	self.player = player
 	self.previous = previous
 	self.next = next
-	print(previous.global_position)
 	previousPosition = [previous.global_position, previous.global_position]
 	previousRotation = [previous.rotation, previous.rotation]
 	

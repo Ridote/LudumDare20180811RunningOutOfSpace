@@ -16,6 +16,7 @@ var maxSpeed = 10
 var normalSpeed = 5
 var minSpeed = 2
 var torque = 10
+var running = false
 
 #GUI
 var minEnergyValue = 5
@@ -97,8 +98,9 @@ func grow():
 	var prevBody = $Tail.previous
 	prevBody.setNext(body)
 	body.setBodies(self, prevBody, $Tail)
-	$Tail.setBodies(self, body, null)
 	$Tail.player.add_child(body)
+	$Tail.setBodies(self, body, null)
+	
 
 func die():
 	print("Die not implemented yet")

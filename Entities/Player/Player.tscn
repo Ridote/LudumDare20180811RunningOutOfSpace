@@ -23,7 +23,6 @@ autostart = false
 
 [node name="Mouth" parent="." index="2" instance=ExtResource( 3 )]
 
-editor/display_folded = true
 position = Vector2( -0.85022, -39.7711 )
 
 [node name="Camera2D" type="Camera2D" parent="Mouth" index="1"]
