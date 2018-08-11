@@ -22,8 +22,8 @@ window/size/test_height=480
 
 [layer_names]
 
-2d_physics/layer_1="Head"
-2d_physics/layer_2="FirstBody"
+2d_physics/layer_1="Mouth"
+2d_physics/layer_2="Head"
 2d_physics/layer_3="Body"
 2d_physics/layer_4="Wall"
 2d_physics/layer_5="Enemy"

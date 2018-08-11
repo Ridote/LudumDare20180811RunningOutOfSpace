@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Dummy.png-e60537736cfca915f0f54a7e5ae55441.stex"
+path="res://.import/mouth.png-3da04b9caba20f108343ed6cc1ac3885.stex"
 
 [deps]
 
-source_file="res://Graphics/Sprites/Player/Dummy.png"
-dest_files=[ "res://.import/Dummy.png-e60537736cfca915f0f54a7e5ae55441.stex" ]
+source_file="res://Graphics/Sprites/Player/mouth.png"
+dest_files=[ "res://.import/mouth.png-3da04b9caba20f108343ed6cc1ac3885.stex" ]
 
 [params]
 

@@ -7,9 +7,9 @@ var slowDown = false
 var up = false
 
 #Movement Attributes
-var maxSpeed = 10
-var normalSpeed = 5
-var minSpeed = 1
+var maxSpeed = 0
+var normalSpeed = 0
+var minSpeed = 0
 
 #GUI
 var minEnergyValue = 5
@@ -18,11 +18,16 @@ var currentEnergy = 0
 
 #Code control
 var tired = false
+var previousPosition = Vector2()
+var previousAngle = 0
 
 func _ready():
-	$Mouth/MouthAnimation.get_animation("Mouth").set_loop(true)
-	$Mouth/MouthAnimation.play("Mouth")
+	$Mouth/Mouth/MouthAnimation.get_animation("Mouth").set_loop(true)
+	$Mouth/Mouth/MouthAnimation.play("Mouth")
 	currentEnergy = maxEnergyValue
+	$Head.setBodies(self, $Mouth, $Body)
+	$Body.setBodies(self, $Head, $Tail)
+	$Tail.setBodies(self, $Body, null)
 
 func _physics_process(delta):
 	#Keyboard input update
@@ -53,8 +58,12 @@ func _physics_process(delta):
 	#Update GUI
 	updateGUI()
 	
+	previousPosition = global_position
+	previousAngle = global_rotation
 	#If we collide either we lost or we ate something
-	var collisionObject = move_and_collide(vel)
+	var collisionObject = $Mouth.move_and_collide(vel)
+	
+	updateBody()
 
 func get_input():
 	left = Input.is_action_pressed("ui_left")
@@ -68,3 +77,13 @@ func updateGUI():
 
 func _on_SpeedCooldown_timeout():
 	tired = false
+
+func updateBody():
+	$Head.updateBody()
+
+func grow():
+	print("Grow not implemented yed")
+
+func die():
+	print("Die not implemented yet")
+	queue_free()

@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Entities/Player/Mouth.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/Sprites/Player/mouth.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8.96311, 6.46082 )
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Mouth"
+length = 0.7
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("MouthSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[node name="MouthKinematic" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 28
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="Mouth" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+
+[node name="MouthAnimation" type="AnimationPlayer" parent="Mouth" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Mouth = SubResource( 2 )
+blend_times = [  ]
+_sections_unfolded = [ "Pause", "Playback Options" ]
+
+[node name="MouthSprite" type="Sprite" parent="Mouth" index="1"]
+
+position = Vector2( 1.60465, 3.12855 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+_sections_unfolded = [ "Animation", "Region" ]
+
+
