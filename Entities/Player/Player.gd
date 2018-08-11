@@ -13,8 +13,8 @@ var minSpeed = 1
 
 #GUI
 var minEnergyValue = 5
-var maxEnergyValue = 20
-var currentEnergy = 20
+var maxEnergyValue = 50
+var currentEnergy = 0
 
 #Code control
 var tired = false
@@ -22,6 +22,7 @@ var tired = false
 func _ready():
 	$Mouth/MouthAnimation.get_animation("Mouth").set_loop(true)
 	$Mouth/MouthAnimation.play("Mouth")
+	currentEnergy = maxEnergyValue
 
 func _physics_process(delta):
 	#Keyboard input update
@@ -37,15 +38,22 @@ func _physics_process(delta):
 	else:
 		vel = vel*normalSpeed
 		currentEnergy += 1
+		if currentEnergy > maxEnergyValue:
+			currentEnergy = maxEnergyValue
 	if currentEnergy == minEnergyValue:
 		$SpeedCooldown.start()
 		tired = true
+		
 	#Because we are playing with the orientation to calculate the speed, we will rotate the head to calculate the new speed direction
 	if right:
 		$Mouth.rotation_degrees+=5
 	elif left:
 		$Mouth.rotation_degrees-=5
-
+	
+	#Update GUI
+	updateGUI()
+	
+	#If we collide either we lost or we ate something
 	var collisionObject = move_and_collide(vel)
 
 func get_input():
@@ -55,7 +63,8 @@ func get_input():
 	up = Input.is_action_pressed("ui_up")
 
 func updateGUI():
-	$GUI
+	$GUI.updateEnergy(currentEnergy)
+	$GUI.tired(tired)
 
 func _on_SpeedCooldown_timeout():
 	tired = false
