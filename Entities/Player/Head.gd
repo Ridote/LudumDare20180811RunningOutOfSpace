@@ -15,7 +15,7 @@ func setBodies(player, previous, next):
 	self.previous = previous
 	self.next = next
 	
-func attachNext(next):
+func setNext(next):
 	self.next = next
 	
 func updateBody():

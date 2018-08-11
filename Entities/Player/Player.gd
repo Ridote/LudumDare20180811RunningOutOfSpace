@@ -1,5 +1,8 @@
 extends Node2D
 
+#External classes
+var bodyPrefab = preload("res://Entities/Player/Body.tscn")
+
 #Control
 var left = false
 var right = false
@@ -25,9 +28,22 @@ func _ready():
 	$Mouth/Mouth/MouthAnimation.get_animation("Mouth").set_loop(true)
 	$Mouth/Mouth/MouthAnimation.play("Mouth")
 	currentEnergy = maxEnergyValue
+	var body1 = bodyPrefab.instance()
+	var body2 = bodyPrefab.instance()
+	var body3 = bodyPrefab.instance()
+	var body4 = bodyPrefab.instance()
 	$Head.setBodies(self, $Mouth, $Body)
-	$Body.setBodies(self, $Head, $Tail)
-	$Tail.setBodies(self, $Body, null)
+	$Body.setBodies(self, $Head, body1)
+	body1.setBodies(self, $Body, body2)
+	body2.setBodies(self, body1, body3)
+	body3.setBodies(self, body2, body4)
+	body4.setBodies(self, body3, $Tail)
+	$Tail.setBodies(self, body4, null)
+	
+	self.add_child(body1)
+	self.add_child(body2)
+	self.add_child(body3)
+	self.add_child(body4)
 
 func _physics_process(delta):
 	#Keyboard input update
