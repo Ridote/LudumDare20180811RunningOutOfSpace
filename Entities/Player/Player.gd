@@ -7,9 +7,9 @@ var slowDown = false
 var up = false
 
 #Movement Attributes
-var maxSpeed = 0
-var normalSpeed = 0
-var minSpeed = 0
+var maxSpeed = 20
+var normalSpeed = 10
+var minSpeed = 5
 
 #GUI
 var minEnergyValue = 5

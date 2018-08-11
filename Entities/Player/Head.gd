@@ -24,7 +24,7 @@ func updateBody():
 	global_position = previous.previousPosition
 	rotation = previous.previousRotation
 	if(previous != null):
-		global_position = previous.previousPosition - Vector2(sin(previous.previousRotation), -cos(previous.previousRotation)).normalized()*32
+		global_position = previous.previousPosition - Vector2(sin(previous.previousRotation), -cos(previous.previousRotation)).normalized()*16
 	
 	if(next != null):
 		next.updateBody()
