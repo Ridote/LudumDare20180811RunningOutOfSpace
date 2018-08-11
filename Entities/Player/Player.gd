@@ -21,8 +21,6 @@ var currentEnergy = 0
 
 #Code control
 var tired = false
-var previousPosition = Vector2()
-var previousAngle = 0
 
 func _ready():
 	$Mouth/Mouth/MouthAnimation.get_animation("Mouth").set_loop(true)
@@ -74,8 +72,6 @@ func _physics_process(delta):
 	#Update GUI
 	updateGUI()
 	
-	previousPosition = global_position
-	previousAngle = global_rotation
 	#If we collide either we lost or we ate something
 	var collisionObject = $Mouth.move_and_collide(vel)
 	
