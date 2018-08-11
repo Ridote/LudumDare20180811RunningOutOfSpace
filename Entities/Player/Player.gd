@@ -8,6 +8,8 @@ var left = false
 var right = false
 var slowDown = false
 var up = false
+var growButton = false
+var canGrow = true
 
 #Movement Attributes
 var maxSpeed = 20
@@ -28,22 +30,9 @@ func _ready():
 	$Mouth/Mouth/MouthAnimation.get_animation("Mouth").set_loop(true)
 	$Mouth/Mouth/MouthAnimation.play("Mouth")
 	currentEnergy = maxEnergyValue
-	var body1 = bodyPrefab.instance()
-	var body2 = bodyPrefab.instance()
-	var body3 = bodyPrefab.instance()
-	var body4 = bodyPrefab.instance()
 	$Head.setBodies(self, $Mouth, $Body)
-	$Body.setBodies(self, $Head, body1)
-	body1.setBodies(self, $Body, body2)
-	body2.setBodies(self, body1, body3)
-	body3.setBodies(self, body2, body4)
-	body4.setBodies(self, body3, $Tail)
-	$Tail.setBodies(self, body4, null)
-	
-	self.add_child(body1)
-	self.add_child(body2)
-	self.add_child(body3)
-	self.add_child(body4)
+	$Body.setBodies(self, $Head, $Tail)
+	$Tail.setBodies(self, $Body, null)
 
 func _physics_process(delta):
 	#Keyboard input update
@@ -64,6 +53,11 @@ func _physics_process(delta):
 	if currentEnergy == minEnergyValue:
 		$SpeedCooldown.start()
 		tired = true
+		
+	if growButton && canGrow:
+		$WaitUntilNewGrouth.start()
+		canGrow = false
+		grow()
 		
 	#Because we are playing with the orientation to calculate the speed, we will rotate the head to calculate the new speed direction
 	if right:
@@ -86,10 +80,14 @@ func get_input():
 	right = Input.is_action_pressed("ui_right")
 	slowDown = Input.is_action_pressed("ui_down")
 	up = Input.is_action_pressed("ui_up")
-
+	growButton = Input.is_key_pressed(KEY_G)
+	
 func updateGUI():
 	$GUI.updateEnergy(currentEnergy)
 	$GUI.tired(tired)
+	
+func canGrowAgain():
+	canGrow = true
 
 func _on_SpeedCooldown_timeout():
 	tired = false
@@ -98,7 +96,12 @@ func updateBody():
 	$Head.updateBody()
 
 func grow():
-	print("Grow not implemented yed")
+	var body = bodyPrefab.instance()
+	var prevBody = $Tail.previous
+	prevBody.setNext(body)
+	body.setBodies(self, prevBody, $Tail)
+	$Tail.setBodies(self, body, null)
+	$Tail.player.add_child(body)
 
 func die():
 	print("Die not implemented yet")

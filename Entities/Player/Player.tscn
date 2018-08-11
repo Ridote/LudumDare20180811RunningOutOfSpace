@@ -62,6 +62,15 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 position = Vector2( -0.0944672, 30.3331 )
 
+[node name="WaitUntilNewGrouth" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 0.3
+one_shot = false
+autostart = false
+
 [connection signal="timeout" from="SpeedCooldown" to="." method="_on_SpeedCooldown_timeout"]
+
+[connection signal="timeout" from="WaitUntilNewGrouth" to="." method="canGrowAgain"]
 
 
