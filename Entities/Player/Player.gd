@@ -12,9 +12,10 @@ var growButton = false
 var canGrow = true
 
 #Movement Attributes
-var maxSpeed = 20
-var normalSpeed = 10
-var minSpeed = 5
+var maxSpeed = 10
+var normalSpeed = 5
+var minSpeed = 1
+var torque = 7
 
 #GUI
 var minEnergyValue = 5
@@ -59,9 +60,9 @@ func _physics_process(delta):
 		
 	#Because we are playing with the orientation to calculate the speed, we will rotate the head to calculate the new speed direction
 	if right:
-		$Mouth.rotation_degrees+=5
+		$Mouth.rotation_degrees+=torque
 	elif left:
-		$Mouth.rotation_degrees-=5
+		$Mouth.rotation_degrees-=torque
 	
 	#Update GUI
 	updateGUI()
