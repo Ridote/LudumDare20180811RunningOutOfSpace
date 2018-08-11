@@ -23,8 +23,9 @@ func updateBody():
 	previousRotation = rotation
 	global_position = previous.previousPosition
 	rotation = previous.previousRotation
-	if($previous != null):
-		global_position = $previous.previousPosition - Vector2(sin($previous.previousRotation), -cos($previous.previousRotation)).normalized()*32
+	if(previous != null):
+		global_position = previous.previousPosition - Vector2(sin(previous.previousRotation), -cos(previous.previousRotation)).normalized()*32
+	
 	if(next != null):
 		next.updateBody()
 	
