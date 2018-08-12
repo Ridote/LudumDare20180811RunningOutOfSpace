@@ -199,7 +199,7 @@ cast_to = Vector2( 0, 50 )
 collision_mask = 15
 _sections_unfolded = [ "Transform" ]
 
-[connection signal="timeout" from="Brain" to="." method="handleRotation"]
+[connection signal="timeout" from="Brain" to="." method="think"]
 
 [connection signal="timeout" from="Calm" to="." method="calmdown"]
 
