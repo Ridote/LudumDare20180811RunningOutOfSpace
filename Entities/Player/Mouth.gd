@@ -2,6 +2,10 @@ extends KinematicBody2D
 
 var previousPosition = [Vector2(0,0), Vector2(0,0), Vector2(0,0)]
 var previousRotation = [0, 0, 0]
+var player = null
+
+func setPlayer(player):
+	self.player = player
 
 func _physics_process(delta):
 	previousPosition[0] = previousPosition[1]

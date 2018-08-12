@@ -33,6 +33,7 @@ var tired = false
 func _ready():
 	$Mouth/Mouth/MouthAnimation.get_animation("Mouth").set_loop(true)
 	$Mouth/Mouth/MouthAnimation.play("Mouth")
+	$Mouth.setPlayer(self)
 	currentEnergy = maxEnergyValue
 	$Head.setBodies(self, $Mouth, $Body)
 	$Body.setBodies(self, $Head, $Tail)
@@ -69,7 +70,7 @@ func _physics_process(delta):
 		$Mouth.rotation_degrees-=torque
 	
 	#Update GUI
-	$GUI.updateGUI(currentEnergy, tired, blood, humans, robots)
+	$GUI.updateGUI(currentEnergy, tired, blood, humans, robots, getPoints())
 	
 	#If we collide either we lost or we ate something
 	var collisionObject = $Mouth.move_and_collide(vel)
@@ -106,6 +107,22 @@ func grow():
 		body.global_position.x = 10000
 		prevBody.setNext(body)
 		$Tail.setBodies(self, body, null)
+
+func eatBlood():
+	blood += 1
+	grow()
+
+func eatHuman():
+	humans += 1
+	grow()
+
+func eatRobot():
+	robots += 1
+	maxEnergyValue += 5
+	grow()
+
+func getPoints():
+	return blood + 2*robots + 4*humans
 
 func die():
 	print("Die not implemented yet")
