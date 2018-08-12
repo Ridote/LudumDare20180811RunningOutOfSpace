@@ -12,10 +12,10 @@ var growButton = false
 var canGrow = true
 
 #Movement Attributes
-var maxSpeed = 10
-var normalSpeed = 5
-var minSpeed = 2
-var torque = 10
+var maxSpeed = 6
+var normalSpeed = 3
+var minSpeed = 1
+var torque = 6
 var speedPhase = 1
 
 #GUI

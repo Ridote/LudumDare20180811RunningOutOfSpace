@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var playerSpotted = false
 var speed = 1
-var speedRunning = 10
+var speedRunning = 5
 
 var distance2Player = 0
 func _ready():
