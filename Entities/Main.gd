@@ -5,10 +5,17 @@ extends Node2D
 # var b = "textvar"
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
+	
 	pass
 
 func _process(delta):
 	if(Input.is_action_just_pressed("ui_select")):
 		get_tree().paused = !get_tree().paused
+	showPauseScreen(get_tree().paused)
+func showPauseScreen(value):
+	if value:
+		$Pause/CanvasModulate.show()
+		$Pause/Label.show()
+	else:
+		$Pause/CanvasModulate.hide()
+		$Pause/Label.hide()
