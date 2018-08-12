@@ -16,7 +16,7 @@ var maxSpeed = 10
 var normalSpeed = 5
 var minSpeed = 2
 var torque = 10
-var running = false
+var speedPhase = 1
 
 #GUI
 var minEnergyValue = 5
@@ -41,24 +41,23 @@ func _physics_process(delta):
 	var vel = Vector2(sin($Mouth.rotation), -cos($Mouth.rotation)).normalized()
 	if up && !tired && currentEnergy > minEnergyValue:
 		vel = vel*maxSpeed
+		speedPhase = 2
 		currentEnergy -= 1
 	elif slowDown && !tired && currentEnergy > minEnergyValue:
 		vel = vel*minSpeed
+		speedPhase = 0
 		currentEnergy -= 1
 	else:
 		vel = vel*normalSpeed
+		speedPhase = 1
 		currentEnergy += 1
 		if currentEnergy > maxEnergyValue:
 			currentEnergy = maxEnergyValue
 	if currentEnergy == minEnergyValue:
 		$SpeedCooldown.start()
 		tired = true
-		
-	if growButton && canGrow:
-		$WaitUntilNewGrouth.start()
-		canGrow = false
+	if growButton:
 		grow()
-		
 	#Because we are playing with the orientation to calculate the speed, we will rotate the head to calculate the new speed direction
 	if right:
 		$Mouth.rotation_degrees+=torque
@@ -94,13 +93,18 @@ func updateBody():
 	$Tail.updateBody()
 
 func grow():
-	var body = bodyPrefab.instance()
-	var prevBody = $Tail.previous
-	prevBody.setNext(body)
-	body.setBodies(self, prevBody, $Tail)
-	$Tail.player.add_child(body)
-	$Tail.setBodies(self, body, null)
-	
+	if canGrow:
+		$WaitUntilNewGrouth.start()
+		canGrow = false
+		var body = bodyPrefab.instance()
+		$Tail.player.add_child(body)
+		
+		var prevBody = $Tail.previous
+		body.setBodies(self, prevBody, $Tail)
+		#Dirty temporal fix
+		body.global_position.x = 10000
+		prevBody.setNext(body)
+		$Tail.setBodies(self, body, null)
 
 func die():
 	print("Die not implemented yet")
