@@ -4,7 +4,7 @@ var playerSpotted = false
 var speed = 1
 var speedRunning = 10
 
-
+var distance2Player = 0
 func _ready():
 	pass
 
@@ -12,8 +12,9 @@ func _physics_process(delta):
 	move()
 	
 func think():
-	var distance2Player = self.global_position.distance_to(get_parent().get_node("Player").get_node("Mouth").global_position); 
-	print("distance2Player: ", distance2Player)
+	
+	if(get_parent().get_node("Player").get_node("Mouth") != null):
+		distance2Player = self.global_position.distance_to(get_parent().get_node("Player").get_node("Mouth").global_position); 
 	if distance2Player < 300 && !playerSpotted:
 		playerSpotted = true
 		$Calm.start()
@@ -63,3 +64,5 @@ func detect(name):
 			return "wall"
 		_: 
 			return "nothing"
+func die():
+	queue_free()

@@ -54,15 +54,16 @@ custom_solver_bias = 0.0
 radius = 17.8395
 height = 34.9713
 
-[node name="Enemy" type="KinematicBody2D" index="0"]
+[node name="Enemy" type="KinematicBody2D"]
 
+pause_mode = 1
 position = Vector2( 296.406, 244.985 )
 input_pickable = false
 collision_layer = 16
 collision_mask = 15
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Pause" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -142,7 +143,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="Brain" type="Timer" parent="." index="7"]
 
 process_mode = 1
-wait_time = 0.2
+wait_time = 0.5
 one_shot = false
 autostart = true
 

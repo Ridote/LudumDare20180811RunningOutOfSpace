@@ -38,6 +38,12 @@ func updateBody():
 		previous.updateBody()
 	
 
-func _on_Head_area_entered(area):
-	#player.die()
-	print("Collision")
+func _on_Head_body_entered(body):
+	#This means that something crushed into our body
+	if(body.get_name() == "Enemy" || body.get_name() == "Sentry"):
+		player.die()
+
+func die():
+	if(next != null):
+		next.die()
+	queue_free()

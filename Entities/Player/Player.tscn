@@ -9,8 +9,9 @@
 
 [node name="Player" type="Node2D"]
 
+pause_mode = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Pause" ]
 
 [node name="GUI" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -54,7 +55,7 @@ editor_draw_drag_margin = false
 [node name="Head" parent="." index="3" instance=ExtResource( 4 )]
 
 position = Vector2( -0.0944672, -24.7507 )
-_sections_unfolded = [ "Collision", "Transform" ]
+_sections_unfolded = [ "Audio Bus", "Collision", "Transform" ]
 
 [node name="Body" parent="." index="4" instance=ExtResource( 5 )]
 

@@ -16,3 +16,6 @@ func _physics_process(delta):
 	
 	previousPosition[2] = global_position
 	previousRotation[2] = rotation
+	
+func die():
+	queue_free()

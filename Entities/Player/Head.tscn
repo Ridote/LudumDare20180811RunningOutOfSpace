@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16, 8.87271 )
 
-[node name="Head" type="Area2D"]
+[node name="Head" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -20,7 +20,7 @@ collision_mask = 24
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Audio Bus", "Collision" ]
 
 [node name="Shape" type="CollisionShape2D" parent="." index="0"]
 
@@ -33,6 +33,6 @@ texture = ExtResource( 2 )
 vframes = 3
 _sections_unfolded = [ "Animation" ]
 
-[connection signal="area_entered" from="." to="." method="_on_Head_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Head_body_entered"]
 
 

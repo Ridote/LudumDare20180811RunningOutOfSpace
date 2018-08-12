@@ -29,6 +29,7 @@ var robots = 0
 
 #Code control
 var tired = false
+var dead = false
 
 func _ready():
 	$Mouth/Mouth/MouthAnimation.get_animation("Mouth").set_loop(true)
@@ -40,6 +41,8 @@ func _ready():
 	$Tail.setBodies(self, $Body, null)
 
 func _physics_process(delta):
+	if dead:
+		return
 	#Keyboard input update
 	get_input()
 	#Regarding the angle we get the normalised speed (adjusted to one, cause we will increase it depending on the speed)
@@ -74,7 +77,17 @@ func _physics_process(delta):
 	
 	#If we collide either we lost or we ate something
 	var collisionObject = $Mouth.move_and_collide(vel)
-	
+	if(collisionObject != null):
+		var enemyType = collisionObject.get_collider()
+		if(enemyType.get_name() == "Enemy"):
+			enemyType.die()
+			eatHuman()
+		elif(enemyType.get_name() == "Sentry"):
+			enemyType.die()
+			eatRobot()
+		elif(enemyType.get_name() == "CollisionLayer"):
+			die()
+		
 	updateBody()
 
 func get_input():
@@ -125,5 +138,6 @@ func getPoints():
 	return blood + 2*robots + 4*humans
 
 func die():
-	print("Die not implemented yet")
-	queue_free()
+	$Head.die()
+	$Mouth.die()
+	dead = true
