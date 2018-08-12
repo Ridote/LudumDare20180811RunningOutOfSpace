@@ -23,6 +23,10 @@ var minEnergyValue = 5
 var maxEnergyValue = 500
 var currentEnergy = 0
 
+var blood = 0
+var humans = 0
+var robots = 0
+
 #Code control
 var tired = false
 
@@ -65,7 +69,7 @@ func _physics_process(delta):
 		$Mouth.rotation_degrees-=torque
 	
 	#Update GUI
-	updateGUI()
+	$GUI.updateGUI(currentEnergy, tired, blood, humans, robots)
 	
 	#If we collide either we lost or we ate something
 	var collisionObject = $Mouth.move_and_collide(vel)
@@ -79,9 +83,6 @@ func get_input():
 	up = Input.is_action_pressed("ui_up")
 	growButton = Input.is_key_pressed(KEY_G)
 	
-func updateGUI():
-	$GUI.updateEnergy(currentEnergy)
-	$GUI.tired(tired)
 	
 func canGrowAgain():
 	canGrow = true

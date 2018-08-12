@@ -1,12 +1,13 @@
 extends CanvasLayer
 
 func _ready():
-	$VBoxContainer/HBoxContainer/Tired.region_enabled = false
-	$VBoxContainer/HBoxContainer/Tired/TiredAnimation.get_animation("Tired").set_loop(true)
-	$VBoxContainer/HBoxContainer/Tired/TiredAnimation.play("Tired")
+	$VBoxContainer/HBoxContainer2/Tired.region_enabled = false
+	$VBoxContainer/HBoxContainer2/Tired/TiredAnimation.get_animation("Tired").set_loop(true)
+	$VBoxContainer/HBoxContainer2/Tired/TiredAnimation.play("Tired")
 
-func updateEnergy(value):
-	$VBoxContainer/HBoxContainer/EnergyBar.rect_size.x = value
-
-func tired(value):
-	$VBoxContainer/HBoxContainer/Tired.visible = value
+func updateGUI(energy, tired, blood, humans, robots):
+	$VBoxContainer/HBoxContainer/EnergyBar.rect_size.x = energy
+	$VBoxContainer/HBoxContainer2/Blood.text = str(blood)
+	$VBoxContainer/HBoxContainer2/Humans.text = str(humans)
+	$VBoxContainer/HBoxContainer2/Robots.text = str(robots)
+	$VBoxContainer/HBoxContainer2/Tired.visible = tired
