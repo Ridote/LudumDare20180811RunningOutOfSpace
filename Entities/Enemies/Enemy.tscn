@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/Enemies/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/Sprites/walking1.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 
@@ -15,28 +16,59 @@ resource_name = "Idle"
 length = 1.0
 loop = false
 step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=3]
 
 resource_name = "Run"
-length = 1.0
-loop = false
+length = 4.0
+loop = true
 step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0, 4, 5, 4 ]
+}
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=4]
 
 custom_solver_bias = 0.0
-radius = 10.0
+radius = 17.8395
+height = 34.9713
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="Enemy" type="KinematicBody2D" index="0"]
 
+position = Vector2( 296.406, 244.985 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 16
+collision_mask = 15
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
+
+editor/display_folded = true
+texture = ExtResource( 2 )
+hframes = 6
 
 [node name="Animation" type="AnimationPlayer" parent="Sprite" index="0"]
 
@@ -44,14 +76,102 @@ root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-playback_speed = 1.0
+playback_speed = 10.0
 anims/EnemySpot = SubResource( 1 )
 anims/Idle = SubResource( 2 )
 anims/Run = SubResource( 3 )
 blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." index="1"]
 
+position = Vector2( -1.16795, -3.79585 )
+rotation = 1.5708
 shape = SubResource( 4 )
+
+[node name="View1" type="RayCast2D" parent="." index="2"]
+
+position = Vector2( -31.3267, -2.05833 )
+rotation = 3.14159
+scale = Vector2( 1, 0.972915 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 100, 0 )
+collision_mask = 15
+
+[node name="View2" type="RayCast2D" parent="." index="3"]
+
+position = Vector2( -1.91473, -0.640701 )
+rotation = 3.14159
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 60, 90 )
+collision_mask = 15
+_sections_unfolded = [ "Transform" ]
+
+[node name="View3" type="RayCast2D" parent="." index="4"]
+
+position = Vector2( -2.12927, -0.737411 )
+rotation = 3.14159
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 120 )
+collision_mask = 15
+_sections_unfolded = [ "Transform" ]
+
+[node name="View4" type="RayCast2D" parent="." index="5"]
+
+position = Vector2( -1.86771, -1.86459 )
+rotation = 3.14159
+enabled = true
+exclude_parent = true
+cast_to = Vector2( -60, 90 )
+collision_mask = 15
+_sections_unfolded = [ "Transform" ]
+
+[node name="View5" type="RayCast2D" parent="." index="6"]
+
+position = Vector2( 27.1791, -3.06677 )
+rotation = 3.14159
+enabled = true
+exclude_parent = true
+cast_to = Vector2( -100, 0 )
+collision_mask = 15
+_sections_unfolded = [ "Transform" ]
+
+[node name="Brain" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = false
+autostart = true
+
+[node name="View" type="RayCast2D" parent="." index="8"]
+
+position = Vector2( -1.33475, -1.78587 )
+rotation = 3.14159
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 500 )
+collision_mask = 15
+_sections_unfolded = [ "Transform" ]
+
+[node name="View6" type="RayCast2D" parent="." index="9"]
+
+position = Vector2( -7.94434, 11.5192 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( -60, 60 )
+collision_mask = 15
+
+[node name="View7" type="RayCast2D" parent="." index="10"]
+
+position = Vector2( 5.56097, 10.3275 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 60, 60 )
+collision_mask = 15
+
+[connection signal="timeout" from="Brain" to="." method="handleRotation"]
 
 
