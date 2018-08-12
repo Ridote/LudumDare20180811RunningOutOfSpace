@@ -2,29 +2,33 @@ extends KinematicBody2D
 
 var playerSpotted = false
 var speed = 1
+var player;
 
 func _ready():
 	pass
 
 func _physics_process(delta):
-	if $View.is_colliding():
-		if detect($View.get_collider().get_name()) == "player":
-			rotate_degrees(180)
-			playerSpotted = true
+	var distance2Player = self.global_position.distance_to(player.global_position); 
+	if distance2Player < 200 && !playerSpotted:
+		playerSpotted = true
+		$Calm.start()
 	move()
 		
 func move():
 	var vel = Vector2(sin(self.rotation), -cos(self.rotation)).normalized()
-	if playerSpotted:
+	if not playerSpotted:
 		move_and_collide(vel * speed)
 	if playerSpotted:
-		move_and_collide(vel * speed * 2)
+		move_and_collide(vel * (speed + 4))
 
 func rotate_degrees(degrees):
 	self.rotate(deg2rad(degrees))
 	
+func calmdown():
+	playerSpotted = false
+	
 func handleRotation():
-	if not $View3.is_colliding():
+	if !$View31.is_colliding() && !$View32.is_colliding() && !$View33.is_colliding():
 		return;
 	if not $View2.is_colliding():
 		rotate(-45)

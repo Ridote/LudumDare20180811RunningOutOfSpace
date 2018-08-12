@@ -109,13 +109,13 @@ cast_to = Vector2( 60, 90 )
 collision_mask = 15
 _sections_unfolded = [ "Transform" ]
 
-[node name="View3" type="RayCast2D" parent="." index="4"]
+[node name="View32" type="RayCast2D" parent="." index="4"]
 
 position = Vector2( -2.12927, -0.737411 )
 rotation = 3.14159
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 0, 120 )
+cast_to = Vector2( 0, 70 )
 collision_mask = 15
 _sections_unfolded = [ "Transform" ]
 
@@ -172,6 +172,35 @@ exclude_parent = true
 cast_to = Vector2( 60, 60 )
 collision_mask = 15
 
+[node name="View31" type="RayCast2D" parent="." index="11"]
+
+position = Vector2( -33.0792, -5.14565 )
+rotation = 3.14159
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 50 )
+collision_mask = 15
+_sections_unfolded = [ "Transform" ]
+
+[node name="Calm" type="Timer" parent="." index="12"]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = false
+autostart = false
+
+[node name="View33" type="RayCast2D" parent="." index="13"]
+
+position = Vector2( 27.1985, -4.41051 )
+rotation = 3.14159
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 50 )
+collision_mask = 15
+_sections_unfolded = [ "Transform" ]
+
 [connection signal="timeout" from="Brain" to="." method="handleRotation"]
+
+[connection signal="timeout" from="Calm" to="." method="calmdown"]
 
 
