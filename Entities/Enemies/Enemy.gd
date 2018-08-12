@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var playerSpotted = false
 var speed = 1
+var speedRunning = 10
 
 
 func _ready():
@@ -11,10 +12,9 @@ func _physics_process(delta):
 	move()
 	
 func think():
-	var distance2Player = self.global_position.distance_to(get_parent().get_node("Player").global_position); 
-	print("player: ", get_parent().get_node("Player").global_position)
-	print("enemy: ", self.global_position)
-	if distance2Player < 100 && !playerSpotted:
+	var distance2Player = self.global_position.distance_to(get_parent().get_node("Player").get_node("Mouth").global_position); 
+	print("distance2Player: ", distance2Player)
+	if distance2Player < 300 && !playerSpotted:
 		playerSpotted = true
 		$Calm.start()
 	handleRotation()
@@ -24,7 +24,7 @@ func move():
 	if not playerSpotted:
 		move_and_collide(vel * speed)
 	if playerSpotted:
-		move_and_collide(vel * (speed + 6))
+		move_and_collide(vel * (speedRunning))
 
 func rotate_degrees(degrees):
 	self.rotate(deg2rad(degrees))
