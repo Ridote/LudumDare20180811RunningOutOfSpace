@@ -51,15 +51,14 @@ _sections_unfolded = [ "Animation" ]
 
 [node name="Light2D" type="Light2D" parent="." index="2"]
 
-position = Vector2( 1.96509, -1.50854 )
-scale = Vector2( 5.61012, 5.52595 )
+scale = Vector2( 8, 8 )
 enabled = true
 editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
 color = Color( 0.699219, 0.699219, 0.699219, 1 )
-energy = 0.8
+energy = 1.0
 mode = 2
 range_height = 0.0
 range_z_min = -1024
@@ -74,15 +73,14 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
-_sections_unfolded = [ "Material" ]
+_sections_unfolded = [ "Material", "Transform" ]
 
 [node name="Shader" type="Sprite" parent="." index="3"]
 
 material = SubResource( 3 )
-position = Vector2( 1.78619, 0.0795898 )
-scale = Vector2( 5.79001, 5.49958 )
+scale = Vector2( 8, 8 )
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Material" ]
+_sections_unfolded = [ "Material", "Transform" ]
 
 [connection signal="body_entered" from="." to="." method="_on_Head_body_entered"]
 
