@@ -6,6 +6,8 @@ var speedRunning = 5
 
 var distance2Player = 0
 func _ready():
+	$Sprite/Animation.get_animation("Run").set_loop(true)
+	$Sprite/Animation.play("Run")
 	pass
 
 func _physics_process(delta):
