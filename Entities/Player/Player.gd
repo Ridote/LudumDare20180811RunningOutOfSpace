@@ -118,6 +118,8 @@ func grow(number):
 		
 func _grow():
 	var body = bodyPrefab.instance()
+	#We need to call Body all the bodies so we can easily identify them
+	body.set_name("Body")
 	$Tail.player.add_child(body)
 	
 	var prevBody = $Tail.previous

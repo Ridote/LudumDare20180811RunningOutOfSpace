@@ -2,6 +2,7 @@ extends CanvasLayer
 
 var playerFactory = preload("res://Entities/Player/Player.tscn")
 var humanFactory = preload("res://Entities/Enemies/Enemy.tscn")
+var sentryFactory = preload("res://Entities/Sentry/Sentry.tscn")
 
 func _ready():
 	$EnergyBar.hide()
@@ -34,6 +35,10 @@ func addEnemies():
 			var human = humanFactory.instance()
 			human.global_position = child.global_position
 			get_parent().add_child(human)
+		elif "SentryPosition" in child.get_name():
+			var sentry = sentryFactory.instance()
+			sentry.global_position = child.global_position
+			get_parent().add_child(sentry)
 			
 func removeEnemies():
 	var children = get_parent().get_children()

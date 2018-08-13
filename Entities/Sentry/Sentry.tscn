@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Entities/Sentry/Sentry.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/Sprites/Robot/robostand.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Sprites/Robot/robotop0.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 7.17428
+height = 13.4594
+
+[node name="Sentry" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="Stand" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+position = Vector2( -0.555588, -0.8246 )
+scale = Vector2( 1, 1.68274 )
+texture = ExtResource( 3 )
+offset = Vector2( 0.555588, -6.00164 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite" index="0"]
+
+position = Vector2( 0.555588, -6.00164 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 16
+collision_mask = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D" index="0"]
+
+shape = SubResource( 1 )
+
+
