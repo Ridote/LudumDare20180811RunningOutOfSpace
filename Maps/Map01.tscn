@@ -4,7 +4,7 @@
 [ext_resource path="res://Tilemaps/TilemapCosmo.tres" type="TileSet" id=2]
 [ext_resource path="res://Entities/Food/Blood.tscn" type="PackedScene" id=3]
 
-[node name="Map1" type="Node2D" index="0"]
+[node name="Map1" type="Node2D"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="0"]
 
@@ -356,5 +356,73 @@ position = Vector2( 825.732, 394.509 )
 [node name="StartPosition" type="Position2D" parent="." index="68"]
 
 position = Vector2( 90.8527, 468.996 )
+
+[node name="HumanPosition" type="Position2D" parent="." index="69"]
+
+position = Vector2( 450.58, 380.599 )
+
+[node name="HumanPosition2" type="Position2D" parent="." index="70"]
+
+position = Vector2( 1119.7, 101.902 )
+
+[node name="HumanPosition3" type="Position2D" parent="." index="71"]
+
+position = Vector2( 1096.37, 721.91 )
+
+[node name="HumanPosition4" type="Position2D" parent="." index="72"]
+
+position = Vector2( 468.996, 740.326 )
+
+[node name="HumanPosition5" type="Position2D" parent="." index="73"]
+
+position = Vector2( -84.7137, 1039.89 )
+
+[node name="HumanPosition6" type="Position2D" parent="." index="74"]
+
+position = Vector2( 341.311, 1270.71 )
+
+[node name="HumanPosition7" type="Position2D" parent="." index="75"]
+
+position = Vector2( 858.189, 1300.17 )
+
+[node name="HumanPosition8" type="Position2D" parent="." index="76"]
+
+position = Vector2( 424.797, 1573.96 )
+
+[node name="HumanPosition9" type="Position2D" parent="." index="77"]
+
+position = Vector2( 993.24, 1771.63 )
+
+[node name="HumanPosition10" type="Position2D" parent="." index="78"]
+
+position = Vector2( 1080.41, 1551.86 )
+
+[node name="HumanPosition11" type="Position2D" parent="." index="79"]
+
+position = Vector2( 607.73, 2137.49 )
+
+[node name="HumanPosition12" type="Position2D" parent="." index="80"]
+
+position = Vector2( 1420.49, 2363.4 )
+
+[node name="HumanPosition13" type="Position2D" parent="." index="81"]
+
+position = Vector2( 801.713, 2552.47 )
+
+[node name="HumanPosition14" type="Position2D" parent="." index="82"]
+
+position = Vector2( 1561.68, 2599.12 )
+
+[node name="HumanPosition15" type="Position2D" parent="." index="83"]
+
+position = Vector2( 820.129, 2942.89 )
+
+[node name="HumanPosition16" type="Position2D" parent="." index="84"]
+
+position = Vector2( 408.837, 2967.44 )
+
+[node name="HumanPosition17" type="Position2D" parent="." index="85"]
+
+position = Vector2( 472.679, 3141.78 )
 
 
