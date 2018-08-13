@@ -433,32 +433,4 @@ position = Vector2( 472.679, 3141.78 )
 
 position = Vector2( 131.368, 115.407 )
 
-[node name="SentryPosition02" type="Position2D" parent="." index="88"]
-
-position = Vector2( 202.107, 120.848 )
-
-[node name="SentryPosition03" type="Position2D" parent="." index="89"]
-
-position = Vector2( 328.177, 120.067 )
-
-[node name="SentryPosition04" type="Position2D" parent="." index="90"]
-
-position = Vector2( 518.174, 109.313 )
-
-[node name="SentryPosition05" type="Position2D" parent="." index="91"]
-
-position = Vector2( 106.632, 213.991 )
-
-[node name="SentryPosition06" type="Position2D" parent="." index="92"]
-
-position = Vector2( 207.008, 236.575 )
-
-[node name="SentryPosition07" type="Position2D" parent="." index="93"]
-
-position = Vector2( 146.066, 162.01 )
-
-[node name="SentryPosition08" type="Position2D" parent="." index="94"]
-
-position = Vector2( 218.906, 307.775 )
-
 

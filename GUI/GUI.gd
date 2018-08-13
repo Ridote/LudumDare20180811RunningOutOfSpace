@@ -4,6 +4,11 @@ var playerFactory = preload("res://Entities/Player/Player.tscn")
 var humanFactory = preload("res://Entities/Enemies/Enemy.tscn")
 var sentryFactory = preload("res://Entities/Sentry/Sentry.tscn")
 
+var globalblood = 0
+var globalhumans = 0
+var globalrobots = 0
+var globalpoints = 0
+
 func _ready():
 	$EnergyBar.hide()
 
@@ -13,6 +18,10 @@ func updateGUI(energy, tired, blood, humans, robots, points):
 	$Score/Humans.text = str(humans)
 	$Score/Robots.text = str(robots)
 	$Score/Points.text = str(points)
+	globalblood = blood
+	globalhumans = humans
+	globalrobots = robots
+	globalpoints = points
 
 func start():
 	var player = playerFactory.instance()
@@ -27,6 +36,8 @@ func start():
 func showMainMenu():
 	removeEnemies()
 	$EnergyBar.hide()
+	if OS.has_feature('JavaScript'):
+        JavaScript.eval("newScore(" + String(globalblood) + "," + String(globalhumans) + "," + String(globalrobots) + "," + String(globalpoints) + ")")
 	$MainMenu.show()
 
 func addEnemies():
