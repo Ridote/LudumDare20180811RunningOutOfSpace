@@ -31,7 +31,7 @@ render_priority = 0
 shader = SubResource( 2 )
 shader_param/range = null
 
-[node name="Head" type="Area2D" index="0"]
+[node name="Head" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
