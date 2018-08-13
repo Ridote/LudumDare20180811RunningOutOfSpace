@@ -112,32 +112,36 @@ func _on_SpeedCooldown_timeout():
 func updateBody():
 	$Tail.updateBody()
 
-func grow():
+func grow(number):
 	if canGrow:
 		$WaitUntilNewGrouth.start()
 		canGrow = false
-		var body = bodyPrefab.instance()
-		$Tail.player.add_child(body)
+		for n in number:
+			_grow()
 		
-		var prevBody = $Tail.previous
-		body.setBodies(self, prevBody, $Tail)
-		#Dirty temporal fix
-		body.global_position.x = 10000
-		prevBody.setNext(body)
-		$Tail.setBodies(self, body, null)
+func _grow():
+	var body = bodyPrefab.instance()
+	$Tail.player.add_child(body)
+	
+	var prevBody = $Tail.previous
+	body.setBodies(self, prevBody, $Tail)
+	#Dirty temporal fix
+	body.global_position.x = 10000
+	prevBody.setNext(body)
+	$Tail.setBodies(self, body, null)
 
 func eatBlood():
 	blood += 1
-	grow()
+	grow(1)
 
 func eatHuman():
 	humans += 1
-	grow()
+	grow(4)
 
 func eatRobot():
 	robots += 1
 	maxEnergyValue += 5
-	grow()
+	grow(8)
 
 func getPoints():
 	return blood + 2*robots + 4*humans

@@ -54,7 +54,7 @@ custom_solver_bias = 0.0
 radius = 17.8395
 height = 1.17934
 
-[node name="Enemy" type="KinematicBody2D" index="0"]
+[node name="Enemy" type="KinematicBody2D"]
 
 pause_mode = 1
 position = Vector2( 296.406, 244.985 )
@@ -70,7 +70,7 @@ _sections_unfolded = [ "Collision", "Pause" ]
 editor/display_folded = true
 texture = ExtResource( 2 )
 vframes = 6
-frame = 2
+frame = 1
 _sections_unfolded = [ "Animation" ]
 
 [node name="Animation" type="AnimationPlayer" parent="Sprite" index="0"]

@@ -4,17 +4,14 @@ var playerFactory = preload("res://Entities/Player/Player.tscn")
 var humanFactory = preload("res://Entities/Enemies/Enemy.tscn")
 
 func _ready():
-	$VBoxContainer/HBoxContainer2/Tired.region_enabled = false
-	$VBoxContainer/HBoxContainer2/Tired/TiredAnimation.get_animation("Tired").set_loop(true)
-	$VBoxContainer/HBoxContainer2/Tired/TiredAnimation.play("Tired")
+	$EnergyBar.hide()
 
 func updateGUI(energy, tired, blood, humans, robots, points):
-	$VBoxContainer/HBoxContainer/EnergyBar.rect_size.x = energy
-	$VBoxContainer/HBoxContainer2/Blood.text = str(blood)
-	$VBoxContainer/HBoxContainer2/Humans.text = str(humans)
-	$VBoxContainer/HBoxContainer2/Robots.text = str(robots)
-	$VBoxContainer/HBoxContainer2/Points.text = str(points)
-	$VBoxContainer/HBoxContainer2/Tired.visible = tired
+	$EnergyBar/EnergyBar.rect_size.x = energy
+	$Score/Blood.text = str(blood)
+	$Score/Humans.text = str(humans)
+	$Score/Robots.text = str(robots)
+	$Score/Points.text = str(points)
 
 func start():
 	var player = playerFactory.instance()
@@ -22,10 +19,12 @@ func start():
 	get_parent().add_child(player)
 	get_parent().get_node("Player").startTimer()
 	addEnemies()
+	$EnergyBar.show()
 	$MainMenu.hide()
 	
 func showMainMenu():
 	removeEnemies()
+	$EnergyBar.hide()
 	$MainMenu.show()
 
 func addEnemies():
