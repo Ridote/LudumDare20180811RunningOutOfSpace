@@ -96,9 +96,8 @@ func _physics_process(delta):
 func get_input():
 	left = Input.is_action_pressed("ui_left")
 	right = Input.is_action_pressed("ui_right")
-	slowDown = Input.is_key_pressed(KEY_Z)
-	up = Input.is_key_pressed(KEY_X)
-	growButton = Input.is_key_pressed(KEY_G)
+	slowDown = Input.is_action_pressed("ui_down")
+	up = Input.is_action_pressed("ui_up")
 	
 	
 func canGrowAgain():
