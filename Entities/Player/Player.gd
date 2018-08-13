@@ -81,6 +81,7 @@ func _physics_process(delta):
 	#If we collide either we lost or we ate something
 	var collisionObject = $Mouth.move_and_collide(vel)
 	if(collisionObject != null):
+		print(collisionObject.get_collider().get_name())
 		var enemyType = collisionObject.get_collider()
 		if "Enemy" in enemyType.get_name():
 			enemyType.die()
@@ -89,8 +90,6 @@ func _physics_process(delta):
 			enemyType.die()
 			eatRobot()
 		elif "CollisionLayer" in enemyType.get_name():
-			die()
-		elif "Body" in enemyType.get_name():
 			die()
 		
 	updateBody()

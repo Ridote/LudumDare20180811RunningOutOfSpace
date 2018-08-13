@@ -35,7 +35,6 @@ func die():
 	queue_free()
 
 func _on_Area2D_body_entered(body):
-	print(body.get_name())
 	match body.get_name():
 		"Mouth":
 			player.eatRobot()

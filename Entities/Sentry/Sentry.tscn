@@ -10,7 +10,7 @@ custom_solver_bias = 0.0
 radius = 7.17428
 height = 13.4594
 
-[node name="Sentry" type="Node2D" index="0"]
+[node name="Sentry" type="Node2D"]
 
 pause_mode = 1
 script = ExtResource( 1 )
