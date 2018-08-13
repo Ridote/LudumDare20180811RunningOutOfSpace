@@ -7,9 +7,10 @@ var sightDistance = 100000
 var player = null
 var objective = Vector2(0,0)
 func _ready():
-	player = get_parent().get_node("Player")
+	pass
 
 func _physics_process(delta):
+	player = get_parent().get_node("Player")
 	#If player hasn't been deleted
 	if weakref(player).get_ref():
 		think()
@@ -34,6 +35,7 @@ func die():
 	queue_free()
 
 func _on_Area2D_body_entered(body):
+	print(body.get_name())
 	match body.get_name():
 		"Mouth":
 			player.eatRobot()

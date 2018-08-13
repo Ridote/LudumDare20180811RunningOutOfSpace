@@ -10,9 +10,11 @@ custom_solver_bias = 0.0
 radius = 7.17428
 height = 13.4594
 
-[node name="Sentry" type="Node2D"]
+[node name="Sentry" type="Node2D" index="0"]
 
+pause_mode = 1
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 
 [node name="Stand" type="Sprite" parent="." index="0"]
 

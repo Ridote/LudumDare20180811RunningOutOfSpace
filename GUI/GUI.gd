@@ -18,6 +18,7 @@ func start():
 	var player = playerFactory.instance()
 	player.global_position = get_parent().get_node("Map1").get_node("StartPosition").global_position
 	get_parent().add_child(player)
+	get_tree().paused = false
 	get_parent().get_node("Player").startTimer()
 	addEnemies()
 	$EnergyBar.show()
@@ -44,4 +45,6 @@ func removeEnemies():
 	var children = get_parent().get_children()
 	for child in children:
 		if "Enemy" in child.get_name():
+			child.queue_free()
+		elif "SentryPosition" in child.get_name():
 			child.queue_free()

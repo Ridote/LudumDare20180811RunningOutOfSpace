@@ -90,6 +90,8 @@ func _physics_process(delta):
 			eatRobot()
 		elif "CollisionLayer" in enemyType.get_name():
 			die()
+		elif "Body" in enemyType.get_name():
+			die()
 		
 	updateBody()
 
@@ -152,4 +154,5 @@ func startTimer():
 func die():
 	dead = true
 	get_parent().get_node("GUI").showMainMenu()
+	get_tree().paused = true
 	self.queue_free()
