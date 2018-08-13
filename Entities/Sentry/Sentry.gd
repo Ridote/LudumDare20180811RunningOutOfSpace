@@ -31,7 +31,7 @@ func think():
 		if voice && $Sprite/Area2D.global_position.distance_to(result.collider.global_position) < 300:
 			voice = false
 			randomize()
-			$AudioStreamPlayer2D.stream = (sounds[int(rand_range(0, 3))%3])
+			$AudioStreamPlayer2D.set_stream(sounds[int(rand_range(0, 3))%3])
 			$AudioStreamPlayer2D.play()
 
 func lookAt(position):
