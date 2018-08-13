@@ -8,7 +8,7 @@
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." index="0"]
 
-color = Color( 0.0507813, 0.0480042, 0.0480042, 1 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]
 

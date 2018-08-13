@@ -47,3 +47,6 @@ func die():
 	if(next != null):
 		next.die()
 	queue_free()
+	
+	
+	

@@ -13,16 +13,23 @@ extents = Vector2( 16, 8.87271 )
 
 code = "shader_type canvas_item;
 
+uniform float range = 0.2;
+
 void fragment(){
 	vec2 uv = UV -0.5;
 	float len = length(uv);
-	COLOR = vec4(0.0,0.0,0.0,len);
-}"
+	if(len > 0.2){
+		len = 1.0;
+	}
+	COLOR = vec4(0.0,0.0,0.0, smoothstep(0.0, range, len));
+}
+"
 
 [sub_resource type="ShaderMaterial" id=3]
 
 render_priority = 0
 shader = SubResource( 2 )
+shader_param/range = null
 
 [node name="Head" type="Area2D"]
 
@@ -75,7 +82,7 @@ shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 _sections_unfolded = [ "Material", "Transform" ]
 
-[node name="Shader" type="Sprite" parent="." index="3"]
+[node name="Shader" type="Sprite" parent="Light2D" index="0"]
 
 material = SubResource( 3 )
 scale = Vector2( 8, 8 )
