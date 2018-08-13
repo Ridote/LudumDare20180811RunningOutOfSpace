@@ -31,7 +31,7 @@ render_priority = 0
 shader = SubResource( 2 )
 shader_param/range = null
 
-[node name="Head" type="Area2D"]
+[node name="Head" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -58,13 +58,14 @@ _sections_unfolded = [ "Animation" ]
 
 [node name="Light2D" type="Light2D" parent="." index="2"]
 
-scale = Vector2( 8, 8 )
+position = Vector2( -0.429688, 3.46655 )
+scale = Vector2( 7.96396, 8.79276 )
 enabled = true
 editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
-color = Color( 0.699219, 0.699219, 0.699219, 1 )
+color = Color( 0.851562, 0.851562, 0.851562, 1 )
 energy = 1.0
 mode = 2
 range_height = 0.0
@@ -80,14 +81,17 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
-_sections_unfolded = [ "Material", "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shader" type="Sprite" parent="Light2D" index="0"]
 
 material = SubResource( 3 )
-scale = Vector2( 8, 8 )
+position = Vector2( 0.653569, 0.126764 )
+scale = Vector2( 1.01838, 1.015 )
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Material", "Transform" ]
+_sections_unfolded = [ "Material" ]
 
 [connection signal="body_entered" from="." to="." method="_on_Head_body_entered"]
 

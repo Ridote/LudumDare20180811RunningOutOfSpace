@@ -5,14 +5,12 @@
 
 [node name="GUI" type="CanvasLayer" index="0"]
 
-pause_mode = 2
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause" ]
 
 [node name="MainMenu" type="Panel" parent="." index="0"]
 
@@ -127,6 +125,7 @@ _sections_unfolded = [ "Animation" ]
 
 [node name="Score" type="Container" parent="." index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -183,13 +182,12 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0.03125, 0, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_colors" ]
 
 [node name="Robots" type="Label" parent="Score" index="4"]
 
@@ -207,7 +205,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0, 0.132813, 1, 1 )
+custom_colors/font_color = Color( 0.808594, 0.808594, 0.808594, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "0"
 percent_visible = 1.0
