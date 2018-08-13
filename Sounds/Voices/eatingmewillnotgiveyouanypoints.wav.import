@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/eatingmewillnotgiveyouanypoints.wav-2b23f76ce41912a6d23f335bf05bbdca.sample"
+
+[deps]
+
+source_file="res://Sounds/Voices/eatingmewillnotgiveyouanypoints.wav"
+dest_files=[ "res://.import/eatingmewillnotgiveyouanypoints.wav-2b23f76ce41912a6d23f335bf05bbdca.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

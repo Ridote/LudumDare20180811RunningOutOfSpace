@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/donteatme.wav-7c3f478f7b0cdeb690893717b28b0c13.sample"
+
+[deps]
+
+source_file="res://Sounds/Voices/donteatme.wav"
+dest_files=[ "res://.import/donteatme.wav-7c3f478f7b0cdeb690893717b28b0c13.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
