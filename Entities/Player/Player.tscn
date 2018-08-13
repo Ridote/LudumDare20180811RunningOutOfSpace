@@ -10,7 +10,7 @@
 
 pause_mode = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Pause" ]
+_sections_unfolded = [ "Collision", "Pause", "Transform" ]
 
 [node name="SpeedCooldown" type="Timer" parent="." index="0"]
 
@@ -23,6 +23,7 @@ autostart = false
 
 editor/display_folded = true
 position = Vector2( -0.85022, -39.7711 )
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="Mouth" index="1"]
 

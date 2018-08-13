@@ -12,10 +12,10 @@ var growButton = false
 var canGrow = true
 
 #Movement Attributes
-var maxSpeed = 6
-var normalSpeed = 3
-var minSpeed = 1
-var torque = 6
+var maxSpeed = 8
+var normalSpeed = 4
+var minSpeed = 2
+var torque = 7
 var speedPhase = 1
 
 #GUI
@@ -70,10 +70,13 @@ func _physics_process(delta):
 	if growButton:
 		grow()
 	#Because we are playing with the orientation to calculate the speed, we will rotate the head to calculate the new speed direction
-	if right:
-		$Mouth.rotation_degrees+=torque
-	elif left:
-		$Mouth.rotation_degrees-=torque
+	var mouse = get_global_mouse_position()
+	$Mouth.look_at(mouse)
+	$Mouth.rotation_degrees += 90
+#	if right:
+#		$Mouth.rotation_degrees+=torque
+#	elif left:
+#		$Mouth.rotation_degrees-=torque
 	
 	#Update GUI
 	get_parent().get_node("GUI").updateGUI(currentEnergy, tired, blood, humans, robots, getPoints())
