@@ -12,7 +12,9 @@ func _physics_process(delta):
 	move()
 	
 func think():
-	
+	# don't think if there is no player
+	if get_parent().get_node("Player") == null:
+		return
 	if(get_parent().get_node("Player").get_node("Mouth") != null):
 		distance2Player = self.global_position.distance_to(get_parent().get_node("Player").get_node("Mouth").global_position); 
 	if distance2Player < 300 && !playerSpotted:

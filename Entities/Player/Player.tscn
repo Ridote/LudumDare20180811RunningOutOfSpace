@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Player/Mouth.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Entities/Player/Head.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Entities/Player/Body.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Player/Tail.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Player/Mouth.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Player/Head.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Player/Body.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Player/Tail.tscn" type="PackedScene" id=5]
 
 [node name="Player" type="Node2D" index="0"]
 
@@ -13,17 +12,16 @@ pause_mode = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pause" ]
 
-[node name="GUI" parent="." index="0" instance=ExtResource( 2 )]
-
-[node name="SpeedCooldown" type="Timer" parent="." index="1"]
+[node name="SpeedCooldown" type="Timer" parent="." index="0"]
 
 process_mode = 1
 wait_time = 3.0
 one_shot = false
 autostart = false
 
-[node name="Mouth" parent="." index="2" instance=ExtResource( 3 )]
+[node name="Mouth" parent="." index="1" instance=ExtResource( 2 )]
 
+editor/display_folded = true
 position = Vector2( -0.85022, -39.7711 )
 
 [node name="Camera2D" type="Camera2D" parent="Mouth" index="1"]
@@ -32,7 +30,7 @@ position = Vector2( 0.85022, 39.7711 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 1, 1 )
+zoom = Vector2( 1.5, 1.5 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
@@ -52,26 +50,35 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="Head" parent="." index="3" instance=ExtResource( 4 )]
+[node name="Head" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( -0.0944672, -24.7507 )
 _sections_unfolded = [ "Audio Bus", "Collision", "Transform" ]
 
-[node name="Body" parent="." index="4" instance=ExtResource( 5 )]
+[node name="Body" parent="." index="3" instance=ExtResource( 4 )]
 
-[node name="Tail" parent="." index="5" instance=ExtResource( 6 )]
+[node name="Tail" parent="." index="4" instance=ExtResource( 5 )]
 
 position = Vector2( -0.0944672, 30.3331 )
 
-[node name="WaitUntilNewGrouth" type="Timer" parent="." index="6"]
+[node name="WaitUntilNewGrouth" type="Timer" parent="." index="5"]
 
 process_mode = 1
 wait_time = 0.3
 one_shot = false
 autostart = false
 
+[node name="Start" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
 [connection signal="timeout" from="SpeedCooldown" to="." method="_on_SpeedCooldown_timeout"]
 
 [connection signal="timeout" from="WaitUntilNewGrouth" to="." method="canGrowAgain"]
+
+[connection signal="timeout" from="Start" to="." method="letsStart"]
 
 

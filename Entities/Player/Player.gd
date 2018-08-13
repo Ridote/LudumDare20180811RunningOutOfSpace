@@ -29,7 +29,7 @@ var robots = 0
 
 #Code control
 var tired = false
-var dead = false
+var dead = true
 
 func _ready():
 	$Mouth/Mouth/MouthAnimation.get_animation("Mouth").set_loop(true)
@@ -39,6 +39,9 @@ func _ready():
 	$Head.setBodies(self, $Mouth, $Body)
 	$Body.setBodies(self, $Head, $Tail)
 	$Tail.setBodies(self, $Body, null)
+
+func letsStart():
+	dead = false
 
 func _physics_process(delta):
 	if dead:
@@ -73,19 +76,19 @@ func _physics_process(delta):
 		$Mouth.rotation_degrees-=torque
 	
 	#Update GUI
-	$GUI.updateGUI(currentEnergy, tired, blood, humans, robots, getPoints())
+	get_parent().get_node("GUI").updateGUI(currentEnergy, tired, blood, humans, robots, getPoints())
 	
 	#If we collide either we lost or we ate something
 	var collisionObject = $Mouth.move_and_collide(vel)
 	if(collisionObject != null):
 		var enemyType = collisionObject.get_collider()
-		if(enemyType.get_name() == "Enemy"):
+		if "Enemy" in enemyType.get_name():
 			enemyType.die()
 			eatHuman()
-		elif(enemyType.get_name() == "Sentry"):
+		elif "Sentry" in enemyType.get_name():
 			enemyType.die()
 			eatRobot()
-		elif(enemyType.get_name() == "CollisionLayer"):
+		elif "CollisionLayer" in enemyType.get_name():
 			die()
 		
 	updateBody()
@@ -93,8 +96,8 @@ func _physics_process(delta):
 func get_input():
 	left = Input.is_action_pressed("ui_left")
 	right = Input.is_action_pressed("ui_right")
-	slowDown = Input.is_action_pressed("ui_down")
-	up = Input.is_action_pressed("ui_up")
+	slowDown = Input.is_key_pressed(KEY_Z)
+	up = Input.is_key_pressed(KEY_X)
 	growButton = Input.is_key_pressed(KEY_G)
 	
 	
@@ -137,7 +140,11 @@ func eatRobot():
 func getPoints():
 	return blood + 2*robots + 4*humans
 
+func startTimer():
+	$Start.stop()
+	$Start.start()
+
 func die():
-	$Head.die()
-	$Mouth.die()
 	dead = true
+	get_parent().get_node("GUI").showMainMenu()
+	self.queue_free()

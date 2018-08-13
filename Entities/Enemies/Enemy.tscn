@@ -54,7 +54,7 @@ custom_solver_bias = 0.0
 radius = 17.8395
 height = 34.9713
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="Enemy" type="KinematicBody2D" index="0"]
 
 pause_mode = 1
 position = Vector2( 296.406, 244.985 )
