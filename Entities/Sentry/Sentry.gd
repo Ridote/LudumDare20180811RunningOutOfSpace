@@ -1,11 +1,14 @@
 extends Node2D
 
+var sounds = [preload("res://Sounds/Voices/donteatme.wav"), preload("res://Sounds/Voices/eatingmewillnotgiveyouanypoints.wav"), preload("res://Sounds/Voices/ohlookanalien.wav"), preload("res://Sounds/Voices/ohnoamonster.wav")]
 
 var playerSpotted = false
 var torque = 5
 var sightDistance = 100000
 var player = null
 var objective = Vector2(0,0)
+var voice = true
+
 func _ready():
 	pass
 
@@ -25,6 +28,11 @@ func think():
 			_: 
 				pass
 		lookAt(result.collider.global_position)
+		if voice && $Sprite/Area2D.global_position.distance_to(result.collider.global_position) < 300:
+			voice = false
+			randomize()
+			$AudioStreamPlayer2D.stream = (sounds[int(rand_range(0, 3))%3])
+			$AudioStreamPlayer2D.play()
 
 func lookAt(position):
 	#This should be smooth

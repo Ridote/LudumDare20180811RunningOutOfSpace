@@ -15,7 +15,7 @@ color = Color( 0, 0, 0, 1 )
 
 stream = ExtResource( 1 )
 volume_db = 0.0
-pitch_scale = 1.0
+pitch_scale = 0.5
 autoplay = true
 mix_target = 0
 bus = "Master"
@@ -434,32 +434,48 @@ position = Vector2( 472.679, 3141.78 )
 
 position = Vector2( 131.368, 115.407 )
 
-[node name="SentryPosition02" type="Position2D" parent="." index="88"]
+[node name="SentryPosition09" type="Position2D" parent="." index="88"]
+
+position = Vector2( 570.952, 294.769 )
+
+[node name="SentryPosition02" type="Position2D" parent="." index="89"]
 
 position = Vector2( 1836.45, 827.772 )
 
-[node name="SentryPosition03" type="Position2D" parent="." index="89"]
+[node name="SentryPosition03" type="Position2D" parent="." index="90"]
 
 position = Vector2( 2045.63, 400.399 )
 
-[node name="SentryPosition04" type="Position2D" parent="." index="90"]
+[node name="SentryPosition04" type="Position2D" parent="." index="91"]
 
 position = Vector2( 1630.64, 356.404 )
 
-[node name="SentryPosition05" type="Position2D" parent="." index="91"]
+[node name="SentryPosition05" type="Position2D" parent="." index="92"]
 
 position = Vector2( 1140.43, 1056.1 )
 
-[node name="SentryPosition06" type="Position2D" parent="." index="92"]
+[node name="SentryPosition06" type="Position2D" parent="." index="93"]
 
 position = Vector2( 1599.8, 1562.89 )
 
-[node name="SentryPosition07" type="Position2D" parent="." index="93"]
+[node name="SentryPosition07" type="Position2D" parent="." index="94"]
 
 position = Vector2( 1470.16, 2963.11 )
 
-[node name="SentryPosition08" type="Position2D" parent="." index="94"]
+[node name="SentryPosition08" type="Position2D" parent="." index="95"]
 
 position = Vector2( 100.347, 3121.07 )
+
+[node name="SentryPosition10" type="Position2D" parent="." index="96"]
+
+position = Vector2( 1244.22, 264.801 )
+
+[node name="SentryPosition11" type="Position2D" parent="." index="97"]
+
+position = Vector2( 1442.86, 593.581 )
+
+[node name="SentryPosition12" type="Position2D" parent="." index="98"]
+
+position = Vector2( 709.958, 874.413 )
 
 
