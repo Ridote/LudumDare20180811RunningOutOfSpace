@@ -32,3 +32,12 @@ func lookAt(position):
 
 func die():
 	queue_free()
+
+func _on_Area2D_body_entered(body):
+	match body.get_name():
+		"Mouth":
+			player.eatRobot()
+			queue_free()
+		_:
+			if body.has_method("die"):
+				$body.die()

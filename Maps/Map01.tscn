@@ -8,7 +8,6 @@
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." index="0"]
 
-visible = false
 color = Color( 0.0507813, 0.0480042, 0.0480042, 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]

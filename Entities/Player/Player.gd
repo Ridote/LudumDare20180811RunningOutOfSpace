@@ -20,7 +20,7 @@ var speedPhase = 1
 
 #GUI
 var minEnergyValue = 5
-var maxEnergyValue = 500
+var maxEnergyValue = 50
 var currentEnergy = 0
 
 var blood = 0
